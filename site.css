@@ -72,12 +72,11 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    padding: 0.85rem 1.25rem;
-    background: rgba(244, 247, 251, 0.88);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(219, 228, 239, 0.8);
+    gap: 0.75rem 1rem;
+    padding: 0.75rem 1.25rem;
+    /* Solid — transparent logo must not sit on frosted/hero bleed */
+    background: #fff;
+    border-bottom: 1px solid var(--line);
 }
 
 .brand {
@@ -86,11 +85,18 @@ a:hover {
     gap: 0.55rem;
     text-decoration: none;
     color: inherit;
+    min-width: 0;
+    flex-shrink: 0;
 }
 
 .brand img {
     width: 2.35rem;
     height: 2.35rem;
+    flex-shrink: 0;
+    padding: 0.2rem;
+    border-radius: 0.55rem;
+    background: #fff;
+    box-shadow: inset 0 0 0 1px rgba(219, 228, 239, 0.95);
 }
 
 .brand-name {
@@ -101,7 +107,9 @@ a:hover {
 
 .site-nav {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
     gap: 0.85rem 1.1rem;
     font-size: 0.9rem;
     font-weight: 600;
@@ -110,10 +118,41 @@ a:hover {
 .site-nav a {
     text-decoration: none;
     color: var(--muted);
+    white-space: nowrap;
 }
 
 .site-nav a:hover {
     color: var(--blue);
+}
+
+@media (max-width: 560px) {
+    .site-header {
+        flex-wrap: wrap;
+        padding: 0.65rem 1rem 0.7rem;
+        row-gap: 0.55rem;
+    }
+
+    .brand {
+        width: 100%;
+    }
+
+    .brand img {
+        width: 2.1rem;
+        height: 2.1rem;
+    }
+
+    .brand-name {
+        font-size: 1.28rem;
+    }
+
+    .site-nav {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 1rem;
+        font-size: 0.82rem;
+        padding-top: 0.15rem;
+        border-top: 1px solid var(--line);
+    }
 }
 
 /* —— Hero (full-bleed Laminat) —— */
